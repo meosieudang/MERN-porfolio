@@ -1,0 +1,73 @@
+
+.header_porfolio {
+  width: 100%;
+  height: 100vh;
+  background: url("https://cdn.pixabay.com/photo/2018/02/14/10/28/business-3152586_960_720.jpg")
+    no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  .overlay {
+    background: rgba($color: #000000, $alpha: 0.5);
+    width: 100%;
+    height: 100%;
+  }
+  .porfolio_content {
+    position: relative;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+}
+
+.porfolio_intro {
+  height: 100vh;
+  width: 100%;
+  background: url(https://www.loudwallpapers.com/wp-content/uploads/2018/10/night-sky-wallpaper.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+
+  .porfolio_title {
+    background-color: #2a2a2a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2%;
+  }
+
+  @media screen and (max-width: 576px) {
+    .porfolio_title{
+      width: 80%;
+      h1{
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.section-padding {
+  padding: 5% 15%;
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background-color: #2a2a2a;
+}
+
+//@at-root
+
+.active{
+  background-color: #20c997 !important;
+}
+

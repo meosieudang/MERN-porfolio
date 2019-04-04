@@ -1,0 +1,67 @@
+.padding_contact {
+  padding: 0 15%;
+  h1,
+  p,
+  .contact_icon {
+    color: #cacaca;
+  }
+
+  .contact_field {
+    width: 100%;
+
+    .contact_input {
+      width: 100%;
+      margin-left: 10px;
+
+      // input{
+      //   color: #cacaca
+      // }
+    }
+
+    textarea {
+      width: 100%;
+    }
+  }
+
+  .contact_social {
+    li {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .social_facebook,
+    .social_github,
+    .social_linkedin {
+      border: none;
+      font-size: 2rem;
+      color: white;
+
+      i {
+        margin-right: 10px;
+      }
+    }
+
+    .social_facebook {
+      background-color: #4868ad;
+    }
+
+    .social_github {
+      background-color: #4f4f4f;
+    }
+
+    .social_linkedin {
+      background-color: #0077b5;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    text-align: center;
+  }
+}
+
+.snackbar > div {
+  background-color: #43a047;
+}
+.contact_button_submit{
+  width: 100% !important;
+}

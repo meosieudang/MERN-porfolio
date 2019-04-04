@@ -1,0 +1,56 @@
+.section_padding {
+  padding: 0 15%;
+  h1, p, ul {
+    color: #cacaca;
+  }
+
+  .detail_button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .detail_button_social {
+      i {
+        color: white;
+      }
+
+      .btn_facebook,.btn_github,.btn_linkedin{
+        width: 40px;
+        height: 40px;
+        margin-left: 5px;
+      }
+
+      .btn_facebook {
+        background-color: #4868ad;
+      }
+      .btn_github {
+        background-color: #333;
+      }
+      .btn_linkedin {
+        background-color: #4078c0;
+      }
+    }
+  }
+
+  .detail_img{
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .detail_about, .detail_tech, .detail_source{
+
+    h1{
+
+      &::after{
+        content: '';
+        width: 50%;
+        border-bottom: 1px solid white;
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  }
+}

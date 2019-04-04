@@ -1,0 +1,49 @@
+.porfolio_prev,
+.porfolio_next {
+  position: fixed !important;
+  top: 50%;
+  z-index: 999;
+  color: white !important;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+
+  span {
+    font-size: 24px;
+    transition: all 0.3s;
+    opacity: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: #ae0000 !important;
+
+    .item_left {
+      transform: translateX(0);
+    }
+    .item_right {
+      transform: translate(0);
+    }
+
+    span {
+      opacity: 1;
+    }
+  }
+}
+
+.porfolio_prev {
+  padding-left: 2%;
+
+  .item_left {
+    transform: translateX(-50%);
+  }
+}
+
+.porfolio_next {
+  right: 3%;
+
+  .item_right {
+    transform: translateX(50%);
+  }
+}
