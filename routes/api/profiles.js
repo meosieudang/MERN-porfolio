@@ -5,7 +5,16 @@ const Profile = require("../../models/Profile");
 // @desc get all profiles
 // @access public
 router.get("/", (req, res) => {
-  Profile.find().then(profiles => res.json(profiles));
+  Profile.find()
+    .sort({ name: -1 })
+    .then(profiles => res.json(profiles));
+});
+
+// @route GET api/profiles
+// @desc get 1 profiles
+// @access public
+router.get("/:id", (req, res) => {
+  Profile.findById(req.params.id).then(profiles => res.json(profiles));
 });
 
 // @route POST api/profiles
@@ -13,6 +22,7 @@ router.get("/", (req, res) => {
 // @access public
 router.post("/", (req, res) => {
   const { name, about, tech, src, img, demo } = req.body;
+  console.log(req.body);
   const newProfile = new Profile({
     name,
     about,
@@ -21,7 +31,10 @@ router.post("/", (req, res) => {
     img,
     demo
   });
-  console.log(newProfile);
+  newProfile
+    .save()
+    .then(profile => res.json(profile))
+    .catch(err => console.log(err));
 });
 
 module.exports = router;

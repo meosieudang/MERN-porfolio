@@ -15,25 +15,26 @@ class About extends Component {
           <div className="about_content">
             <h1 className="display-4">Thank you for visiting my website</h1>
             <h1 className="display-4">Hello, my name is Thuận.</h1>
-            <p className="lead">
-              I am an <Link to="/porfolio/1">award winning</Link> Web Developer
-              and UI/UX Javascript with framework ReactJS.
+            <p className="lead mt-3">
+              This is all my <Link to="/porfolio/1">projects</Link> with
+              framework ReactJS
             </p>
             <p className="lead">
               Feel free to take a look at my latest projects on the{" "}
               <Link to="/porfolio">web portfolio page.</Link>
             </p>
             <p className="lead">
-              Any questions please <Link to="/contact">contact me.</Link>
+              Any questions please <Link to="/contact">contact me.</Link> or
+              meosieudang@gmail.com
             </p>
           </div>
 
           <div className="about_social">
             <span>Follow me</span>
-            <a>
+            <a href="https://www.facebook.com/meosieudang1" target={"_blank"}>
               <i class="fa fa-facebook facebook" aria-hidden="true" />
             </a>
-            <a>
+            <a href="https://github.com/meosieudang" target={"_blank"}>
               <i class="fa fa-github github" aria-hidden="true" />
             </a>
             <a>

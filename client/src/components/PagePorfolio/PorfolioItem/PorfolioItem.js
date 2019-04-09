@@ -6,15 +6,15 @@ class PorfolioItem extends Component {
   render() {
     const { item } = this.props;
 
-    const technical = item.technical.map(item => (
+    const technical = item.tech.map(item => (
       <p class="badge badge-danger">{item}</p>
     ));
     return (
       <>
         <div class="col-md-6 mb-4 card_item">
-          <Link to={`porfolio/${item.id}`} className="card_img">
+          <Link to={`porfolio/${item._id}`} className="card_img">
             <div className="card_title">{item.name}</div>
-            <img src={item.image} alt="a" className="w-100 img-fluid" />
+            <img src={item.img} alt="a" className="w-100 img-fluid" />
             <div className="card_text">{technical}</div>
           </Link>
         </div>

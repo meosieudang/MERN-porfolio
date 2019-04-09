@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import "./Detail.scss";
 import { connect } from "react-redux";
-import * as actions from "../../actions/index";
+import { getItemRequest } from "../../actions/profile";
 
 class Detail extends Component {
   onPrevPage = () => {
@@ -17,20 +17,11 @@ class Detail extends Component {
   componentDidMount() {
     const { match } = this.props;
     window.scrollTo(0, 0);
-    this.props.getItemPorfolio(match.params.id);
+    this.props.getItemRequest(match.params.id);
   }
   render() {
     const { getItem } = this.props;
-
-    if (getItem && getItem.technical) {
-      var technicalItem = getItem.technical.map((item, index) => {
-        return (
-          <ul className="lead" key={index}>
-            <li>{item}</li>
-          </ul>
-        );
-      });
-    }
+    if (Object.keys(getItem).length === 0) return <div>loading...</div>;
     return (
       <>
         <a onClick={this.onPrevPage} className="porfolio_prev d-none d-md-flex">
@@ -72,7 +63,7 @@ class Detail extends Component {
           </div>
 
           <div className="detail_img py-4">
-            <img src={getItem.image} alt="a" />
+            <img src={getItem.img} alt="a" />
           </div>
 
           <div className="detail_about py-4">
@@ -87,12 +78,16 @@ class Detail extends Component {
               project.
             </p>
           </div>
-          {technicalItem}
+          <ul>
+            {getItem.tech.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
           <div className="detail_source">
             <h1>Resources</h1>
             <p className="lead">
               Github
-              <a href={getItem.source} target={"_blank"}>
+              <a href={getItem.src} target={"_blank"}>
                 github.com
               </a>
             </p>
@@ -105,19 +100,11 @@ class Detail extends Component {
 
 const mapStateToProps = state => {
   return {
-    getItem: state.getItem
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getItemPorfolio: id => {
-      return dispatch(actions.getItemRequest(id));
-    }
+    getItem: state.porfolio.item
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { getItemRequest }
 )(Detail);

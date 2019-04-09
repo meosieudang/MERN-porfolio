@@ -13,7 +13,6 @@ class Home extends Component {
               autoplay="autoplay"
               muted="muted"
               loop="loop"
-              className="d-md-block d-none"
             >
               <source
                 src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
@@ -21,16 +20,20 @@ class Home extends Component {
               />
             </video>
             <div className="header__overlay" />
-            <div className="a1 d-block d-md-none" />
             <div class="header__list">
               <div class="w-100 text-white header__content">
-                <h1 class="display-3 ">Front End Developer</h1>
-                <p class="lead">React, HTML5, CSS3, JavaScript ES6</p>
-                <Link to="/porfolio">
-                  <Button variant="contained" className="btn__porfolio">
-                    Porfolio
-                  </Button>
-                </Link>
+                <h1 class="display-3 ">Web Developer</h1>
+                <p class="lead">React, Redux, MongoDB, NodeJS, Express</p>
+
+                <Button
+                  variant="contained"
+                  component={Link}
+                  to="/porfolio"
+                  style={{ background: "#20c997" }}
+                >
+                  Porfolio
+                </Button>
+
                 <Button variant="contained" className="bg-danger">
                   <a
                     className="text-white text-center"

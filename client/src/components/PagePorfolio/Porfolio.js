@@ -2,35 +2,40 @@
 import React, { Component } from "react";
 import "./Porfolio.scss";
 import { connect } from "react-redux";
-import * as actions from "../../actions/index";
+import { getPorfolioRequest, filterProject } from "../../actions/profile";
 import PorfolioItem from "./PorfolioItem/PorfolioItem";
-import { Button } from "@material-ui/core";
+import { Button, Paper, Grid, Typography } from "@material-ui/core";
 
 class Porfolio extends Component {
   state = {
     active: "ALL"
   };
   componentDidMount() {
-    this.props.getListPorfolio();
+    this.props.getPorfolioRequest();
   }
 
   handleClick = item => {
-    this.props.getData(item);
-    console.log(item);
+    this.props.filterProject(item);
     this.setState({
       active: item
     });
   };
 
+  itemRender = arr =>
+    arr.map(item => <PorfolioItem item={item} key={item._id} />);
+
   render() {
     const { porfolio, search } = this.props;
     const buttons = [
-      "ALL",
+      "all",
       "Redux",
       "React",
-      "JavaScript ES6",
+      "NodeJS",
+      "MongoDB",
+      "Express",
+      "ES6",
       "HTML5",
-      "RESTful API",
+      "API",
       "Animation",
       "SCSS",
       "Responsive"
@@ -41,9 +46,11 @@ class Porfolio extends Component {
         key={i}
         variant="contained"
         className={
-          this.state.active === item ? "mr-2 mb-2 active" : "mr-2 mb-2"
+          this.state.active === item.toUpperCase()
+            ? "mr-2 mb-2 active"
+            : "mr-2 mb-2"
         }
-        onClick={() => this.handleClick(item)}
+        onClick={() => this.handleClick(item.toUpperCase())}
       >
         {item}
       </Button>
@@ -51,31 +58,40 @@ class Porfolio extends Component {
 
     const listPorfolio =
       Object.keys(search).length === 0
-        ? porfolio.map(item => <PorfolioItem item={item} key={item.id} />)
-        : search.map(item => <PorfolioItem item={item} key={item.id} />);
+        ? this.itemRender(porfolio)
+        : this.itemRender(search);
     return (
       <>
         <div className="header_porfolio">
           <div className="overlay" />
           <div className="porfolio_content">
-            <h1 className="display-3 text-capitalize">hello :)</h1>
+            <h1 className="display-3 text-capitalize">{"hello :)"}</h1>
             <p className="lead text-capitalize">have a good day</p>
           </div>
         </div>
         <div className="porfolio_intro">
-          <div className="porfolio_title text-center rounded text-white">
-            <h1 className="display-4 text-capitalize">
-              web developer portfolio
-            </h1>
-            <p className="lead">
-              Below are the projects I did during self-learning and learning at
-              the academy :
-            </p>
-            <p>
-              From Web Components and UI/UX animations to React.JS, Redux. Check
-              out my web software development portfolio projects.
-            </p>
-          </div>
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            style={{ height: "100%" }}
+          >
+            <Grid item xs={10} md={6}>
+              <Paper style={{ padding: 20 }}>
+                <Typography variant="h2" paragraph align="center">
+                  Web Developer Porfolio
+                </Typography>
+                <Typography variant="h5" paragraph align="center">
+                  {
+                    "Below are the projects I did during self-learning and learning at the academy."
+                  }
+                </Typography>
+                <Typography variant="h5" paragraph align="center">
+                  {"Take Enjoys :)"}
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
         </div>
 
         <div className="container section-padding">
@@ -104,20 +120,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getListPorfolio: () => {
-      dispatch(actions.getPorfolioRequest());
-    },
-    getData: value => {
-      dispatch(actions.getData(value));
-    }
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { getPorfolioRequest, filterProject }
 )(Porfolio);
 
 // onSearch = value => {

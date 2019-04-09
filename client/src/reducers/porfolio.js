@@ -1,29 +1,47 @@
-import * as type from "../constants/actionType";
+import {
+  ADD_NEW_PROFILES_SUCCESS,
+  GET_PORFOLIO,
+  GET_ITEM,
+  FILTER_PROJECT
+} from "../actions/type";
 
 const initialState = {
   porfolios: [],
+  item: {},
   search: []
 };
 
 const porfolio = (state = initialState, action) => {
   switch (action.type) {
-    case type.GET_PORFOLIO:
+    case GET_PORFOLIO:
       return {
         ...state,
         porfolios: action.payload,
         search: []
       };
-    case type.FILTER_PORFOLIO:
+
+    case GET_ITEM:
+      return {
+        ...state,
+        item: action.payload
+      };
+    case FILTER_PROJECT:
       const tempArr = [...state.porfolios];
       const tempResult = [];
       tempArr.map(item =>
-        item.technical.filter(i => {
-          if (i === action.payload) tempResult.push(item);
+        item.tech.filter(project => {
+          if (project === action.payload) tempResult.push(item);
         })
       );
       return {
         ...state,
         search: tempResult
+      };
+
+    case ADD_NEW_PROFILES_SUCCESS:
+      return {
+        ...state,
+        porfolios: [action.payload, ...state.porfolios]
       };
     default:
       return state;
