@@ -37,7 +37,7 @@ class Home extends Component {
                 <Button variant="contained" className="bg-danger">
                   <a
                     className="text-white text-center"
-                    href="https://www.docdroid.net/DYal0DK/hoangnhatthuanresume-1.pdf"
+                    href="https://docdro.id/j5r1EM7"
                     target={"_blank"}
                   >
                     Download CV
